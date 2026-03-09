@@ -1,0 +1,26 @@
+{
+  "name": "6633280621-cedt-playwright-2026",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apiphoomchu/6633280621-cedt-playwright-2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/apiphoomchu/6633280621-cedt-playwright-2026/issues"
+  },
+  "homepage": "https://github.com/apiphoomchu/6633280621-cedt-playwright-2026#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
