@@ -1,6 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-
-const BASE_URL = "https://katalon-demo-cura.herokuapp.com";
+import { BASE_URL } from "./assignment/constants/urls";
 
 export default defineConfig({
   testDir: "./assignment",
