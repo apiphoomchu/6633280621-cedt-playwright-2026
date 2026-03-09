@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
-
-const URL = "https://katalon-demo-cura.herokuapp.com";
-const VALID = { username: "John Doe", password: "ThisIsNotAPassword" };
-const WRONG_PASSWORD = { username: "John Doe", password: "WrongPassword123" };
-const WRONG_USERNAME = { username: "UnknownUser", password: "ThisIsNotAPassword" };
+import {
+  INVALID_PASSWORD_CREDENTIALS,
+  INVALID_USERNAME_CREDENTIALS,
+  VALID_CREDENTIALS,
+} from "./constants/credentials";
 
 async function goToLoginPage(page: import("@playwright/test").Page) {
-  await page.goto(URL);
+  await page.goto("/");
   await page.getByRole("link", { name: "Make Appointment" }).click();
 }
 
@@ -17,8 +17,8 @@ test.describe("Login - Arrange Act Assert", () => {
     });
 
     await test.step("Act", async () => {
-      await page.getByLabel("Username").fill(VALID.username);
-      await page.getByLabel("Password").fill(VALID.password);
+      await page.getByLabel("Username").fill(VALID_CREDENTIALS.username);
+      await page.getByLabel("Password").fill(VALID_CREDENTIALS.password);
       await page.getByRole("button", { name: "Login" }).click();
     });
 
@@ -33,8 +33,8 @@ test.describe("Login - Arrange Act Assert", () => {
     });
 
     await test.step("Act", async () => {
-      await page.getByLabel("Username").fill(WRONG_PASSWORD.username);
-      await page.getByLabel("Password").fill(WRONG_PASSWORD.password);
+      await page.getByLabel("Username").fill(INVALID_PASSWORD_CREDENTIALS.username);
+      await page.getByLabel("Password").fill(INVALID_PASSWORD_CREDENTIALS.password);
       await page.getByRole("button", { name: "Login" }).click();
     });
 
@@ -51,8 +51,8 @@ test.describe("Login - Arrange Act Assert", () => {
     });
 
     await test.step("Act", async () => {
-      await page.getByLabel("Username").fill(WRONG_USERNAME.username);
-      await page.getByLabel("Password").fill(WRONG_USERNAME.password);
+      await page.getByLabel("Username").fill(INVALID_USERNAME_CREDENTIALS.username);
+      await page.getByLabel("Password").fill(INVALID_USERNAME_CREDENTIALS.password);
       await page.getByRole("button", { name: "Login" }).click();
     });
 

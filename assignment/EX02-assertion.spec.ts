@@ -1,7 +1,5 @@
 import { test as base, expect, type Page } from "@playwright/test";
-
-const URL = "https://katalon-demo-cura.herokuapp.com";
-const VALID = { username: "John Doe", password: "ThisIsNotAPassword" };
+import { VALID_CREDENTIALS } from "./constants/credentials";
 
 function getTodayDDMMYYYY(): string {
   const d = new Date();
@@ -12,10 +10,10 @@ function getTodayDDMMYYYY(): string {
 
 const test = base.extend<{ loggedIn: Page }>({
   loggedIn: async ({ page }, use) => {
-    await page.goto(URL);
+    await page.goto("/");
     await page.getByRole("link", { name: "Make Appointment" }).click();
-    await page.getByLabel("Username").fill(VALID.username);
-    await page.getByLabel("Password").fill(VALID.password);
+    await page.getByLabel("Username").fill(VALID_CREDENTIALS.username);
+    await page.getByLabel("Password").fill(VALID_CREDENTIALS.password);
     await page.getByRole("button", { name: "Login" }).click();
     await expect(page.getByRole("heading", { name: "Make Appointment", level: 2 })).toBeVisible();
     await use(page);
